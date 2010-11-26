@@ -44,7 +44,7 @@ fun! s:filename(...)
 	return !a:0 || a:1 == '' ? filename : substitute(a:1, '$1', filename, 'g')
 endf
 
-function! s:cursor()
+function! s:template()
     call s:replace('${datetime}', strftime("%Y/%m/%d %H:%M:%S"), 'g')
     call s:replace('${date}', strftime("%Y/%m/%d"), 'g')
     call s:replace('${FileName}', s:Filename('', 'Page Title'), 'g')
@@ -56,4 +56,4 @@ function! s:cursor()
     return ''
 endfunction
 
-exec 'autocmd! BufNewFile * silent! 0r '.g:template_dir.'template.%:e|:call <SID>cursor()'
+exec 'autocmd! BufNewFile * silent! 0r '.g:template_dir.'template.%:e|:call <SID>template()'
