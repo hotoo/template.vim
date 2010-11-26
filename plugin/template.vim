@@ -15,17 +15,15 @@ if !exists('g:template_author')
     let g:template_author = ''
 endif
 
-function! s:replace(text, repl)
-    try
-        let hasfind=search('\C'.a:text)
-        if hasfind
-            let pos = getpos('.')
-            let line = substitute(getline('.'), a:text, a:repl, '')
-            call setline('.', line)
-            return pos
-        endif
-    catch /.*/
-    endtry
+function! s:replace(text, repl, flag)
+    let hasfind=search('\C'.a:text)
+    while hasfind
+        let pos = getpos('.')
+        let line = substitute(getline('.'), a:text, a:repl, '')
+        call setline('.', line)
+
+        let hasfind = 'g'==a:flag?search('\C'.a:text,'W'):0
+    endwhile
 
     return [1,1]
 endfunction
@@ -47,13 +45,13 @@ fun! s:filename(...)
 endf
 
 function! s:cursor()
-    call s:replace('${datetime}', strftime("%Y/%m/%d %H:%M:%S"))
-    call s:replace('${date}', strftime("%Y/%m/%d"))
-    call s:replace('${FileName}', s:Filename('', 'Page Title'))
-    call s:replace('${filename}', s:filename('', 'page title'))
-    call s:replace('${author}', g:template_author)
-    let cur = s:replace('${cursor}', '')
-    call setpos('.', cur)
+    call s:replace('${datetime}', strftime("%Y/%m/%d %H:%M:%S"), 'g')
+    call s:replace('${date}', strftime("%Y/%m/%d"), 'g')
+    call s:replace('${FileName}', s:Filename('', 'Page Title'), 'g')
+    call s:replace('${filename}', s:filename('', 'page title'), 'g')
+    call s:replace('${author}', g:template_author, 'g')
+    let cur = s:replace('${cursor}', '', '')
+    "call setpos('.', cur)
 
     return ''
 endfunction
