@@ -1,10 +1,8 @@
 /**
  * @overview
  *
- * @author
+ * @author ${author}
  * @version ${date}
  */
 
-(function(){
-    ${cursor}
-})();
+${cursor}

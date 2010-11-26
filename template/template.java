@@ -1,6 +1,10 @@
+/**
+ * @author ${author}
+ * @version ${date}
+ */
 
-class ${filename} {
-    public void ${filename}(){
+public class ${filename} {
+    public ${filename}(){
         ${cursor}
     }
 }
