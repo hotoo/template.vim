@@ -4,17 +4,18 @@
 Smart load template file for Vim.
 
 ## Install
-put `plugin/template.vim` into `$VIM/vimfiles/plugin/` for Windows or `.vim/plugin` for *nix.
+put `plugin/template.vim` into `$VIM/vimfiles/plugin/` for Windows or into `.vim/plugin/` for *nix.
 
-put `template/template.*` into `$VIM/vimfiles/template/` for Windows or into `.vim/template` for *nix.
+put `template/template.*` into `$VIM/vimfiles/template/` for Windows or into `.vim/template/` for *nix.
 
 ## Usage
 `:new file.html`
+
 `:tabnew file.css`
 
 ## See Also
 * [VIM学习笔记 模板(Template) - 语虚](http://yyq123.blogspot.com/2010/08/vim-template.html)
-* [使用vim的一些tip] - 潘魏增(http://panweizeng.com/archives/383)
+* [使用vim的一些tip - 潘魏增](http://panweizeng.com/archives/383)
 * [快速从模板建立文件](http://www.gracecode.com/archives/2414/)
 * [templates.vim : Load filetype templates for new files](http://www.vim.org/scripts/script.php?script_id=1172)
 * [template.vim : Simple and flexible template engine.](http://www.vim.org/scripts/script.php?script_id=2834)
