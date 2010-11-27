@@ -16,16 +16,18 @@ if !exists('g:template_author')
 endif
 
 function! s:replace(text, repl, flag)
-    let hasfind=search('\C'.a:text)
-    while hasfind
-        let pos = getpos('.')
-        let line = substitute(getline('.'), a:text, a:repl, '')
+    let pos=[1, 1]
+    call cursor(1, 1)
+    let hasfind=searchpos('\C'.a:text)
+    while hasfind!=[0,0]
+        let pos = hasfind
+        let line = substitute(getline('.'), a:text, a:repl, a:flag)
         call setline('.', line)
 
-        let hasfind = 'g'==a:flag?search('\C'.a:text,'W'):0
+        let hasfind = 'g'==a:flag?searchpos('\C'.a:text,'W'):[0,0]
     endwhile
 
-    return [1,1]
+    return pos
 endfunction
 
 fun! s:filename(default)
@@ -47,7 +49,8 @@ function! s:template()
     call s:replace('${filename}', s:filename('unamed'), 'g')
     call s:replace('${author}', g:template_author, 'g')
     let cur = s:replace('${cursor}', '', '')
-    "call setpos('.', cur)
+    call setpos(".", [0, cur[0], cur[1]])
+    "call cursor(cur)
 
     return ''
 endfunction
