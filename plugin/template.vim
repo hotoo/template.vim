@@ -28,27 +28,23 @@ function! s:replace(text, repl, flag)
     return [1,1]
 endfunction
 
-fun! s:Filename(...)
-    if 0==a:0
-        let filename = s:filename()
-    elseif 1==a:0
-        let filename = s:filename(a:1)
-    else
-        let filename = s:filename(a:1, a:2)
-    endif
-    return substitute(filename, '^.', '\u&', '')
-endf
-fun! s:filename(...)
+fun! s:filename(default)
 	let filename = expand('%:t:r')
-	if filename == '' | return a:0 == 2 ? a:2 : '' | endif
-	return !a:0 || a:1 == '' ? filename : substitute(a:1, '$1', filename, 'g')
+    return ''==filename ? a:default : filename
+endf
+fun! s:Filename(default)
+    return substitute(s:filename(a:default), '\<.', '\U\0', 'g')
+endf
+fun! s:FILENAME(default)
+    return substitute(s:filename(a:default), '.*', '\U\0', '')
 endf
 
 function! s:template()
     call s:replace('${datetime}', strftime("%Y/%m/%d %H:%M:%S"), 'g')
     call s:replace('${date}', strftime("%Y/%m/%d"), 'g')
-    call s:replace('${FileName}', s:Filename('', 'Page Title'), 'g')
-    call s:replace('${filename}', s:filename('', 'page title'), 'g')
+    call s:replace('${FILENAME}', s:FILENAME('UNAMED'), 'g')
+    call s:replace('${FileName}', s:Filename('Unamed'), 'g')
+    call s:replace('${filename}', s:filename('unamed'), 'g')
     call s:replace('${author}', g:template_author, 'g')
     let cur = s:replace('${cursor}', '', '')
     "call setpos('.', cur)
