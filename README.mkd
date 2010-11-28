@@ -15,6 +15,7 @@ put `template/template.*` into `$VIM/vimfiles/template/` for Windows or into `.v
 
 ## Custom Template
 Support following placeholder.
+
 - `${cursor}` - default cursor position.
 - `${filename}` - get origin file name.
 - `${FileName}` - file-name to File-Name.
