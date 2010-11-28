@@ -15,13 +15,13 @@ put `template/template.*` into `$VIM/vimfiles/template/` for Windows or into `.v
 
 ## Custom Template
 Support following placeholder.
-* `${cursor}` - default cursor position.
-* `${filename}` - get origin file name.
-* `${FileName}` - file-name to File-Name.
-* `${FILENAME}` - filename to FILENAME.
-* `${date}` - today.
-* `${datetime}` - now.
-* `${author}` - Need `let g:template_author = "You Name"`.
+    * `${cursor}` - default cursor position.
+    * `${filename}` - get origin file name.
+    * `${FileName}` - file-name to File-Name.
+    * `${FILENAME}` - filename to FILENAME.
+    * `${date}` - today.
+    * `${datetime}` - now.
+    * `${author}` - Need `let g:template_author = "You Name"`.
 
 ## TODO(maybe not)
 1. 类似 snipMate 的 ${1:default text}，支持多个占位符使用 <Tab> 跳转。${0} 等同于 ${cursor}
