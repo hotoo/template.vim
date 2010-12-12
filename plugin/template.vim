@@ -83,3 +83,4 @@ function! LoadTemplate()
 endfunction
 
 exec 'autocmd! BufNewFile * silent! 0r '.g:template_dir.'template.%:e|:call <SID>template()'
+command! -nargs=0 Template call LoadTemplate()
