@@ -18,6 +18,22 @@ or to `.vim/snippets/_.snippet` for *nix.
 
 If you installed snipMate.vim, input `template<Tab>` to smart load the template for you(when the buffer has suffix or &filetype).
 
+## Custom Template
+Support following placeholder.
+
+- `${cursor}` - default cursor position.
+- `${filename}` - get origin file name.
+- `${FileName}` - file-name to File-Name.
+- `${FILENAME}` - filename to FILENAME.
+- `${date}` - today.
+- `${datetime}` - now.
+- `${author}` - Need `let g:template_author = "You Name"`.
+
+## TODO(maybe not)
+- 类似 snipMate 的 ${1:default text}，支持多个占位符使用 <Tab> 跳转。${0} 等同于 ${cursor}
+  - 问题：作为模板来说是不是有点过度设计了？
+  - 可能会与 snipMate 等使用 <Tab> 的插件冲突。
+
 ## See Also
 * [VIM学习笔记 模板(Template) - 语虚](http://yyq123.blogspot.com/2010/08/vim-template.html)
 * [使用vim的一些tip - 潘魏增](http://panweizeng.com/archives/383)
