@@ -55,4 +55,31 @@ function! s:template()
     return ''
 endfunction
 
+let s:FileType = {
+    \ "javascript" : "js",
+    \ "aspvbs" : "asp"
+\ }
+function! s:getExt()
+    let ext = expand("%:e")
+    if ""==ext
+        let ext = has_key(s:FileType, &ft) ? s:FileType[&ft] : &ft
+    endif
+    return ext
+endfunction
+function! LoadTemplate()
+    let ext=s:getExt()
+    if ""==ext
+        return 'template'
+    endif
+
+    try
+        exec '0r '.g:template_dir.'template.'.ext
+    catch /.*/
+        return 'template'
+    endtry
+
+    call s:template()
+    return ''
+endfunction
+
 exec 'autocmd! BufNewFile * silent! 0r '.g:template_dir.'template.%:e|:call <SID>template()'

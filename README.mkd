@@ -4,14 +4,19 @@
 Smart load template file for Vim.
 
 ## Install
-put `plugin/template.vim` into `$VIM/vimfiles/plugin/` for Windows or into `.vim/plugin/` for *nix.
+Put `plugin/template.vim` into `$VIM/vimfiles/plugin/` for Windows or into `.vim/plugin/` for *nix.
 
-put `template/template.*` into `$VIM/vimfiles/template/` for Windows or into `.vim/template/` for *nix.
+Put `template/template.*` into `$VIM/vimfiles/template/` for Windows or into `.vim/template/` for *nix.
+
+If you installed snipMate.vim, append `snippets/_.snippet` content to `$VIM/snippets/_.snippet` for Windows,
+or to `.vim/snippets/_.snippet` for *nix.
 
 ## Usage
 `:new file.html`
 
 `:tabnew file.css`
+
+If you installed snipMate.vim, input `template<Tab>` to smart load the template for you(when the buffer has suffix or &filetype).
 
 ## See Also
 * [VIM学习笔记 模板(Template) - 语虚](http://yyq123.blogspot.com/2010/08/vim-template.html)
