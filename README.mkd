@@ -47,4 +47,4 @@ Support following placeholder.
 * [templates.vim : Load filetype templates for new files](http://www.vim.org/scripts/script.php?script_id=1172)
 * [template.vim : Simple and flexible template engine.](http://www.vim.org/scripts/script.php?script_id=2834)
     [@github](http://github.com/thinca/vim-template)
-* [https://twitter.com/#!/Leechael/status/26916538862796800 work problem with pathogen]
+* [work problem with pathogen](https://twitter.com/#!/Leechael/status/26916538862796800)
