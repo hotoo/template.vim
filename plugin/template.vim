@@ -8,9 +8,6 @@ if exists('loaded_smart_template')
 endif
 let loaded_smart_template=1
 
-if !exists('g:template_dir')
-    let g:template_dir = substitute(globpath(&rtp, 'template/'), "\n", ',', 'g')
-endif
 if !exists('g:template_author')
     let g:template_author = ''
 endif
@@ -55,10 +52,13 @@ function! s:template()
     return ''
 endfunction
 
+" {FileType:FileExt}
 let s:FileType = {
     \ "javascript" : "js",
+    \ "actionscript": "as",
     \ "aspvbs" : "asp"
 \ }
+
 function! s:getExt()
     let ext = expand("%:e")
     if ""==ext
@@ -66,21 +66,27 @@ function! s:getExt()
     endif
     return ext
 endfunction
+
 function! LoadTemplate()
     let ext=s:getExt()
     if ""==ext
         return 'template'
     endif
 
+    if !exists('g:template_dir')
+        let path = substitute(globpath(&rtp, 'template/template.'.ext), "\n", ',', 'g')
+    else
+        let path = g:template_dir . 'template.'.ext
+    endif
     try
-        exec '0r '.g:template_dir.'template.'.ext
+        exec '0r '.path
+        call s:template()
     catch /.*/
         return 'template'
     endtry
 
-    call s:template()
     return ''
 endfunction
 
-exec 'autocmd! BufNewFile * silent! 0r '.g:template_dir.'template.%:e|:call <SID>template()'
+autocmd! BufNewFile * silent! :call LoadTemplate()
 command! -nargs=0 Template call LoadTemplate()
