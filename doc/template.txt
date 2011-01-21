@@ -1,0 +1,84 @@
+*template.txt*    Smart load template files.
+
+                Smart Template manual by 闲耘™(hotoo)
+                            version 1.0
+
+SmartTemplate                                               *smarttemplate*
+
+    1. Intro                |smarttemplate-intro|
+    2. Install              |smarttemplate-install|
+    3. Usage                |smarttemplate-usage|
+    4. Custom Template      |smarttemplate-custom|
+
+
+==============================================================================
+1. Intro                                        |smarttemplate-intro| 
+
+Smart Template is a plugin for load template file.
+
+
+==============================================================================
+2. Install                                          |smarttemplate-install|
+
+Put `plugin/template.vim` into `$VIM/vimfiles/plugin/` for Windows,
+or into `.vim/plugin/` for *nix.
+
+Put `template/template.*` into `$VIM/vimfiles/template/` for Windows,
+or into `.vim/template/` for *nix.
+
+If your vim installed snipMate.vim, append following code
+to `$VIM/snippets/_.snippet` for Windows,
+or to `.vim/snippets/_.snippet` for *nix. >
+    snippet template
+        `LoadTemplate()`
+<
+
+==============================================================================
+3. Usage                                            |smarttemplate-usage|
+
+*:new* *filename.ext*
+    Auto load template file on buffer created.
+    You can also use: >
+
+    :tabnew filename.ext
+<
+*:Template*
+    If current buffer has been set filetype, you can use this command.
+
+*template<Tab>*
+    If your vim installed snipMate.vim plugin, input `template<Tab>`
+    to smart load the template(when the buffer has suffix or &filetype).
+
+
+==============================================================================
+4. Custom Template                                  |smarttemplate-custom|
+
+Smart template now support following placeholder.
+
+*${cursor}*
+    default cursor position.
+
+*${filename}*
+    replace to origin file name.
+
+*${FileName}*
+    replace to file-name to File-Name.
+
+*${FILENAME}*
+    replace to filename to FILENAME.
+
+*${date}*
+    replace to date of today.
+
+*${datetime}*
+    replace to time of now.
+
+*${author}*
+    replace to author name.
+    need following setting in your vimrc. >
+
+    let g:template_author = "You Name"
+<
+
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:
