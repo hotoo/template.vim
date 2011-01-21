@@ -74,7 +74,11 @@ function! LoadTemplate()
     endif
 
     if !exists('g:template_dir')
-        let path = substitute(globpath(&rtp, 'template/template.'.ext), "\n", ',', 'g')
+        let paths = split(globpath(&rtp, 'template/template.'.ext), "\n")
+        if(0 == len(paths))
+            return 'template'
+        endif
+        let path = paths[0]
     else
         let path = g:template_dir . 'template.'.ext
     endif
