@@ -10,7 +10,7 @@ or into `.vim/plugin/` for *nix.
 Put `template/template.*` into `$VIM/vimfiles/template/` for Windows,
 or into `.vim/template/` for *nix.
 
-If you installed snipMate.vim, append `snippets/_.snippet` content
+If your vim installed snipMate.vim, append `snippets/_.snippet` content
 to `$VIM/snippets/_.snippet` for Windows,
 or to `.vim/snippets/_.snippet` for *nix.
 
@@ -21,7 +21,7 @@ or to `.vim/snippets/_.snippet` for *nix.
 
 If current buffer has been set filetype, you can use command: `:Template`.
 
-If you vim installed snipMate.vim plugin, input `template<Tab>` to smart load
+If your vim installed snipMate.vim plugin, input `template<Tab>` to smart load
 the template(when the buffer has suffix or &filetype).
 
 ## Custom Template
