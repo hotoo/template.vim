@@ -8,7 +8,8 @@ SmartTemplate                                               *smarttemplate*
     1. Intro                |smarttemplate-intro|
     2. Install              |smarttemplate-install|
     3. Usage                |smarttemplate-usage|
-    4. Custom Template      |smarttemplate-custom|
+    4. Settings             |smarttemplate-Settings|
+    5. Custom Template      |smarttemplate-custom|
 
 
 ==============================================================================
@@ -20,15 +21,15 @@ Smart Template is a plugin for load template file.
 ==============================================================================
 2. Install                                          |smarttemplate-install|
 
-Put `plugin/template.vim` into `$VIM/vimfiles/plugin/` for Windows,
-or into `.vim/plugin/` for *nix.
+Put plugin/template.vim into $VIM/vimfiles/plugin/ for Windows,
+or into .vim/plugin/ for *nix.
 
-Put `template/template.*` into `$VIM/vimfiles/template/` for Windows,
-or into `.vim/template/` for *nix.
+Put template/template.* into $VIM/vimfiles/template/ for Windows,
+or into .vim/template/ for *nix.
 
 If your vim installed snipMate.vim, append following code
-to `$VIM/snippets/_.snippet` for Windows,
-or to `.vim/snippets/_.snippet` for *nix. >
+to $VIM/snippets/_.snippet for Windows,
+or to .vim/snippets/_.snippet for *nix. >
     snippet template
         `LoadTemplate()`
 <
@@ -41,6 +42,7 @@ or to `.vim/snippets/_.snippet` for *nix. >
     You can also use: >
 
     :tabnew filename.ext
+    :split filename.ext
 <
 *:Template*
     If current buffer has been set filetype, you can use this command.
@@ -51,7 +53,22 @@ or to `.vim/snippets/_.snippet` for *nix. >
 
 
 ==============================================================================
-4. Custom Template                                  |smarttemplate-custom|
+4. Settings                                            *smarttemplate-settings*
+
+*g:template_dir*
+    If your template files in the different location, you can set this
+    variable.
+    Note: need slash("/" or "\") end of the value.
+>
+    let g:template_dir = "C:\templates\"
+<
+*g:template_author*
+    Set the author name. it well be replace the ${author} placeholder in
+    template file.
+
+
+==============================================================================
+5. Custom Template                                  |smarttemplate-custom|
 
 Smart template now support following placeholder.
 

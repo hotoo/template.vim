@@ -8,17 +8,18 @@
     1. 简介                 |smarttemplate-intro|
     2. 安装                 |smarttemplate-install|
     3. 用法                 |smarttemplate-usage|
-    4. 自定义模板           |smarttemplate-custom|
+    4. 设置                 |smarttemplate-settings|
+    5. 自定义模板           |smarttemplate-custom|
 
 
 ==============================================================================
-1. 简介                                             |smarttemplate-intro| 
+1. 简介                                             *smarttemplate-intro*
 
 Smart Template 是一个智能加载模板文件的插件。
 
 
 ==============================================================================
-2. 安装                                             |smarttemplate-install|
+2. 安装                                             *smarttemplate-install*
 
 将 plugin/template.vim 放置到 $VIM/vimfiles/plugin/ (for Windows) 目录下，
 或者放置到 .vim/plugin/ (for *nix) 目录下。
@@ -34,7 +35,7 @@ Smart Template 是一个智能加载模板文件的插件。
 
 
 ==============================================================================
-3. 用法                                             |smarttemplate-usage|
+3. 用法                                             *smarttemplate-usage*
 
 *:new* *filename.ext*
     在缓冲区创建时自动加载模板文件。
@@ -52,7 +53,20 @@ Smart Template 是一个智能加载模板文件的插件。
 
 
 ==============================================================================
-4. 自定义模板                                   |smarttemplate-custom|
+4. 设置                                             *smarttemplate-settings*
+
+*g:template_dir*
+    如果希望模板文件放在指定的目录，可以设置这个参数。
+    注意：值需要以斜杠(/)或反斜杠(\)结尾。例如： >
+
+    let g:template_dir = "C:\templates\"
+<
+*g:template_author*
+    设置编辑者的默认名字，将替换模板文件中 ${author} 占位符。
+
+
+==============================================================================
+5. 自定义模板                                      *smarttemplate-custom*
 
 Smart template 现在支持以下占位符：
 
