@@ -8,6 +8,9 @@ if exists('loaded_smart_template')
 endif
 let loaded_smart_template=1
 
+if !exists('g:template_autoload')
+    let g:template_autoload = 1
+endif
 if !exists('g:template_author')
     let g:template_author = ''
 endif
@@ -92,5 +95,7 @@ function! LoadTemplate()
     return ''
 endfunction
 
-autocmd! BufNewFile * silent! :call LoadTemplate()
+if 0 != g:template_autoload
+    autocmd! BufNewFile * silent! :call LoadTemplate()
+endif
 command! -nargs=0 Template call LoadTemplate()

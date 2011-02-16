@@ -24,6 +24,9 @@ If current buffer has been set filetype, you can use command: `:Template`.
 If your vim installed snipMate.vim plugin, input `template<Tab>` to smart load
 the template(when the buffer has suffix or &filetype).
 
+## Optional
+If you didn't want auto load template every time, `let g:template_autoload = 0`.
+
 ## Custom Template
 Support following placeholder.
 
