@@ -36,15 +36,23 @@ Support following placeholder.
 - `${author}` - Need `let g:template_author = "You Name"` in your vimrc.
 
 ## TODO(maybe not)
+- 更流畅的支持 Makefile 这类无后缀的文件。
+- 一种文件类型支持多个模板。
 - 类似 snipMate 的 ${1:default text}，支持多个占位符使用 <Tab> 跳转。${0} 等同于 ${cursor}
   - 问题：作为模板来说是不是有点过度设计了？
   - 可能会与 snipMate 等使用 <Tab> 的插件冲突。
 
 ## See Also
 * [VIM学习笔记 模板(Template) - 语虚](http://yyq123.blogspot.com/2010/08/vim-template.html)
+* [http://www.vim.org/scripts/script.php?script_id=198 template file loader]
 * [使用vim的一些tip - 潘魏增](http://panweizeng.com/archives/383)
-* [快速从模板建立文件 - 明城](http://www.gracecode.com/archives/2414/)
+* [快速从模板建立文件 - 明城](http://www.gracecode.com/archives/2414/) [QuickTemplate@vim.org](http://www.vim.org/scripts/script.php?script_id=2393)
 * [templates.vim : Load filetype templates for new files](http://www.vim.org/scripts/script.php?script_id=1172)
 * [template.vim : Simple and flexible template engine.](http://www.vim.org/scripts/script.php?script_id=2834)
     [@github](http://github.com/thinca/vim-template)
 * [work problem with pathogen](https://twitter.com/#!/Leechael/status/26916538862796800)
+* [templates.vim](http://www.vim.org/scripts/script.php?script_id=1172)
+* [vimplate.vim](http://www.vim.org/scripts/script.php?script_id=1311)
+* [http://www.vim.org/scripts/script.php?script_id=1808 Vimplate Enhanced]
+* [http://www.vim.org/scripts/script.php?script_id=2957 load_template]
+* [http://www.vim.org/scripts/script.php?script_id=1795 autoloadTemplate.vim]
