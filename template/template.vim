@@ -6,6 +6,6 @@
 if exists('loaded_${filename}')
     finish
 endif
-let loaded_${filename}=1
+let loaded_${filename} = 1
 
 ${cursor}

@@ -6,4 +6,10 @@
  * @author ${author}
  * @version ${date}
  */
-html,body{margin:0; padding:0; ${cursor}}
+html,
+body {
+  margin: 0;
+  padding:0;
+}
+
+${cursor}

@@ -21,9 +21,10 @@ or to `.vim/snippets/_.snippet` for *nix.
 
 `:tabnew file.css`
 
-If current buffer has been set filetype, you can use command: `:Template`.
+If current buffer has been set filetype, you can use command: `:Template` to
+load template.
 
-If your vim installed snipMate.vim plugin, input `template<Tab>` to smart load
+If your Vim has installed snipMate plugin, input `template<Tab>` to smart load
 the template(when the buffer has suffix or &filetype).
 
 ## Optional
