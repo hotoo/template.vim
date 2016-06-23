@@ -4,6 +4,7 @@
 Smart load template file for Vim.
 
 ## Install
+
 Put `plugin/template.vim` into `$VIM/vimfiles/plugin/` for Windows,
 or into `.vim/plugin/` for *nix.
 
@@ -15,6 +16,7 @@ to `$VIM/snippets/_.snippet` for Windows,
 or to `.vim/snippets/_.snippet` for *nix.
 
 ## Usage
+
 `:new file.html`
 
 `:tabnew file.css`
@@ -25,9 +27,21 @@ If your vim installed snipMate.vim plugin, input `template<Tab>` to smart load
 the template(when the buffer has suffix or &filetype).
 
 ## Optional
+
+### g:template_autoload
+
 If you didn't want auto load template every time, `let g:template_autoload = 0`.
 
+### g:template_dir
+
+Set you custom template dir.
+
+### g:template_author
+
+author name for template placeholder.
+
 ## Custom Template
+
 Support following placeholder.
 
 - `${cursor}` - default cursor position.
@@ -39,7 +53,7 @@ Support following placeholder.
 - `${author}` - Need `let g:template_author = "You Name"` in your vimrc.
 
 ## TODO(maybe not)
-- 更流畅的支持 Makefile 这类无后缀的文件。
+
 - 一种文件类型支持多个模板。
 - 类似 snipMate 的 ${1:default text}，支持多个占位符使用 <Tab> 跳转。${0} 等同于 ${cursor}
   - 问题：作为模板来说是不是有点过度设计了？
@@ -47,15 +61,17 @@ Support following placeholder.
 - 类似 snipMate 的自定义占位符特性，由用户自定义类似 ${date} 这类占位符，动态计算其值。 -- 百合仙子
 
 ## FIXME
+
 - template.hpp 中防范宏定义重复引入的问题，如果文件名中带有特殊字符会出现 BUG。
     - 防范方案 I: 不要使用带有特殊字符的文件名 :)
     - 解决方案 II: 实现一个占位符，自动剔除、替换特殊字符。
     - 解决方案 III: 也许应该实现由用户自定义占位符的特性？
 
 ## See Also
-* [VIM学习笔记 模板(Template) - 语虚](http://yyq123.blogspot.com/2010/08/vim-template.html)
+
+* [VIM 学习笔记 模板 (Template) - 语虚](http://yyq123.blogspot.com/2010/08/vim-template.html)
 * [http://www.vim.org/scripts/script.php?script_id=198 template file loader]
-* [使用vim的一些tip - 潘魏增](http://panweizeng.com/archives/383)
+* [使用 vim 的一些 tip - 潘魏增](http://panweizeng.com/archives/383)
 * [快速从模板建立文件 - 明城](http://www.gracecode.com/archives/2414/)
     [QuickTemplate@vim.org](http://www.vim.org/scripts/script.php?script_id=2393)
 * [templates.vim : Load filetype templates for new files](http://www.vim.org/scripts/script.php?script_id=1172)
