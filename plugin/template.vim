@@ -74,7 +74,11 @@ let s:FILE_TYPES = {
 \ }
 
 function! s:getFileExt()
-  return expand("%:e")
+  let ext = expand("%:e")
+  if ext == ''
+    return ext
+  endif
+  return '.' . ext
 endfunction
 
 function! s:getFileType()
@@ -95,7 +99,19 @@ function! LoadTemplate()
   let fileType = s:getFileType()
   if "" != fileExt
     " 有文件后缀
-    let templateFileName = 'template.'.fileExt
+
+    let fullFileName = expand('%:p:t')
+    let ext = matchstr(fullFileName, '\..*')
+    while ext != ''
+      if filereadable(g:template_dir . '/template' . ext)
+        let fileExt = ext
+        break
+      endif
+      let fullFileName = substitute(ext, '[^.]*\.', '', '')
+      let ext = matchstr(fullFileName, '\..*')
+    endwhile
+
+    let templateFileName = 'template' . fileExt
   elseif "" != fileName
     " 没有后缀，有文件名
     let templateFileName = fileName
