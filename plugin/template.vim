@@ -54,6 +54,7 @@ endfunction
 function! s:template()
   call s:replace('${datetime}', strftime("%Y-%m-%d %H:%M:%S"), 'g')
   call s:replace('${date}', strftime("%Y-%m-%d"), 'g')
+  call s:replace('${week}', strftime("%A"), 'g')
   call s:replace('${FILENAME}', s:FILENAME('UNAMED'), 'g')
   call s:replace('${FileName}', s:Filename('Unamed'), 'g')
   call s:replace('${filename}', s:filename('unamed'), 'g')
