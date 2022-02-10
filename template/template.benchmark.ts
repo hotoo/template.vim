@@ -1,7 +1,7 @@
 'use strict';
 
-import { Suite } 'benchmark';
-import benchmarks 'beautify-benchmark';
+import { Suite } from 'benchmark';
+import benchmarks from 'beautify-benchmark';
 
 const suite = Suite();
 
@@ -12,7 +12,7 @@ suite
 .add('implemention 2', function() {
   // implemention 2
 })
-.on('cycle', function(event) {
+.on('cycle', function(event: any) {
   benchmarks.add(event.target);
 })
 .on('complete', function() {
