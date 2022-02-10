@@ -3,7 +3,7 @@
 import { Suite } from 'benchmark';
 import benchmarks from 'beautify-benchmark';
 
-const suite = Suite();
+const suite = new Suite();
 
 suite
 .add('implemention 1', function() {
