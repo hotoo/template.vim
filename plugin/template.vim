@@ -38,27 +38,41 @@ function! s:replace(text, repl, flag)
 endfunction
 
 " template placehoders
-function! s:filename(default)
-	let filename = expand('%:t:r')
-  return '' == filename ? a:default : filename
+function! s:toNameWithDefault(fileName, default)
+  return '' == a:fileName ? a:default : a:fileName
 endfunction
 
-function! s:Filename(default)
-  return substitute(s:filename(a:default), '\<.', '\U\0', 'g')
+function! s:toUpperCaseFirstLetter(fileName, default)
+  return substitute(s:toNameWithDefault(a:fileName, a:default), '\<.', '\U\0', 'g')
 endfunction
 
-function! s:FILENAME(default)
-  return substitute(s:filename(a:default), '.*', '\U\0', '')
+function! s:toUpperCase(fileName, default)
+  return toupper(s:toNameWithDefault(a:fileName, a:default))
+  " return substitute(s:toNameWithDefault(a:fileName, a:default), '.*', '\U\0', '')
 endfunction
 
-function! s:template()
+function! s:template(fileName, fileExt)
   call s:replace('${datetime}', strftime("%Y-%m-%d %H:%M:%S"), 'g')
   call s:replace('${date}', strftime("%Y-%m-%d"), 'g')
   call s:replace('${week}', strftime("%A"), 'g')
-  call s:replace('${FILENAME}', s:FILENAME('UNAMED'), 'g')
-  call s:replace('${FileName}', s:Filename('Unamed'), 'g')
-  call s:replace('${filename}', s:filename('unamed'), 'g')
+  call s:replace('${year}', strftime("%Y"), 'g')
+  call s:replace('${month}', strftime("%m"), 'g')
+
+  let dirs = split(expand("%:p:h"), '[/\\]')
+  call s:replace('${dir-1}', get(dirs, -1, ''), 'g')
+  call s:replace('${dir-2}', get(dirs, -2, ''), 'g')
+  call s:replace('${dir-3}', get(dirs, -3, ''), 'g')
+  call s:replace('${dir-4}', get(dirs, -4, ''), 'g')
+  call s:replace('${dir-5}', get(dirs, -5, ''), 'g')
+
+  let pathtime = strptime("%Y-%m-%d", get(dirs, -2, '') . "-" . get(dirs, -1, '') . "-" . a:fileName)
+  call s:replace('${week-by-filepath}', strftime("%A", pathtime), 'g')
+
+  call s:replace('${FILENAME}', s:toUpperCase(a:fileName, 'UNAMED'), 'g')
+  call s:replace('${FileName}', s:toUpperCaseFirstLetter(a:fileName, 'Unamed'), 'g')
+  call s:replace('${filename}', s:toNameWithDefault(a:fileName, 'unamed'), 'g')
   call s:replace('${author}', g:template_author, 'g')
+
   let cur = s:replace('${cursor}', '', '')
   call setpos(".", [0, cur[0], cur[1]])
   "call cursor(cur)
@@ -68,6 +82,7 @@ endfunction
 
 " {FileType:FileExt}
 let s:FILE_TYPES = {
+  \ "typescript" : "ts",
   \ "javascript" : "js",
   \ "actionscript": "as",
   \ "aspvbs" : "asp",
@@ -95,37 +110,55 @@ function! LoadTemplate()
   " 默认模板
   let templateFileName = 'template'
 
+  let fullFileName = s:getFileName()
+  let fileName = fullFileName
   let fileExt = s:getFileExt()
-  let fileName = s:getFileName()
   let fileType = s:getFileType()
   if "" != fileExt
     " 有文件后缀
 
-    let fullFileName = expand('%:p:t')
-    let ext = matchstr(fullFileName, '\..*')
-    while ext != ''
-      if filereadable(g:template_dir . '/template' . ext)
-        let fileExt = ext
+    let lastIndex = 0
+    while 1
+      let index = stridx(fullFileName, ".", lastIndex)
+      if (index >= 0)
+        let ext = slice(fullFileName, index)
+        if filereadable(g:template_dir . '/template' . ext)
+          let fileExt = ext
+          let fileName = slice(fullFileName, 0, index)
+          break
+        endif
+        let lastIndex = index + 1
+      else
+        let fileName = expand("%:p:t")
+        let fileExt = expand('%:e')
         break
       endif
-      let fullFileName = substitute(ext, '[^.]*\.', '', '')
-      let ext = matchstr(fullFileName, '\..*')
     endwhile
 
     let templateFileName = 'template' . fileExt
-  elseif "" != fileName
+
+  elseif "" != fullFileName
     " 没有后缀，有文件名
-    let templateFileName = fileName
-  elseif "" == fileName && "" != fileType
+
+    let templateFileName = fullFileName
+    let fileName = fullFileName
+    let fileExt = ""
+
+  elseif "" == fullFileName && "" != fileType
     " 没有文件名，但是有文件类型
+    " 主要用于设置好 filetype 后执行 :Template 命令。
+
     let templateFileName = 'template.' . (has_key(s:FILE_TYPES, fileType) ? s:FILE_TYPES[ fileType ] : fileType)
+    let fileName = fullFileName
+    let fileExt = ""
+
   endif
 
   let templateFilePath = g:template_dir . '/' .templateFileName
 
   try
     exec '0r '.templateFilePath
-    call s:template()
+    call s:template(fileName, fileExt)
   catch /.*/
     return 'template'
   endtry
