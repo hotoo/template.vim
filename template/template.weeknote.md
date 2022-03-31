@@ -1,4 +1,4 @@
-# ${year}W${FILENAME} 月报
+# ${dir-2}W${filename} 月报
 
 ## 重点事项
 

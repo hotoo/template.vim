@@ -1,4 +1,4 @@
-# ${date} ${week} 杭州 ${cursor}晴 12~15℃
+# ${dir-2}-${dir-1}-${filename} ${week-by-filepath} 杭州 ${cursor}晴 12~15℃
 
 ## 身体状态
 

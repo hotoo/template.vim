@@ -57,10 +57,22 @@ function! s:template(fileName, fileExt)
   call s:replace('${week}', strftime("%A"), 'g')
   call s:replace('${year}', strftime("%Y"), 'g')
   call s:replace('${month}', strftime("%m"), 'g')
+
+  let dirs = split(expand("%:p:h"), '[/\\]')
+  call s:replace('${dir-1}', get(dirs, -1, ''), 'g')
+  call s:replace('${dir-2}', get(dirs, -2, ''), 'g')
+  call s:replace('${dir-3}', get(dirs, -3, ''), 'g')
+  call s:replace('${dir-4}', get(dirs, -4, ''), 'g')
+  call s:replace('${dir-5}', get(dirs, -5, ''), 'g')
+
+  let pathtime = strptime("%Y-%m-%d", get(dirs, -2, '') . "-" . get(dirs, -1, '') . "-" . a:fileName)
+  call s:replace('${week-by-filepath}', strftime("%A", pathtime), 'g')
+
   call s:replace('${FILENAME}', s:toUpperCase(a:fileName, 'UNAMED'), 'g')
   call s:replace('${FileName}', s:toUpperCaseFirstLetter(a:fileName, 'Unamed'), 'g')
   call s:replace('${filename}', s:toNameWithDefault(a:fileName, 'unamed'), 'g')
   call s:replace('${author}', g:template_author, 'g')
+
   let cur = s:replace('${cursor}', '', '')
   call setpos(".", [0, cur[0], cur[1]])
   "call cursor(cur)
