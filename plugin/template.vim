@@ -13,6 +13,9 @@ endif
 if !exists('g:template_author')
   let g:template_author = ''
 endif
+if !exists('g:template_email')
+  let g:template_email = ''
+endif
 
 if !exists('g:template_dir')
   let paths = split(globpath(&rtp, 'template'), "\n")
@@ -71,7 +74,9 @@ function! s:template(fileName, fileExt)
   call s:replace('${FILENAME}', s:toUpperCase(a:fileName, 'UNAMED'), 'g')
   call s:replace('${FileName}', s:toUpperCaseFirstLetter(a:fileName, 'Unamed'), 'g')
   call s:replace('${filename}', s:toNameWithDefault(a:fileName, 'unamed'), 'g')
+
   call s:replace('${author}', g:template_author, 'g')
+  call s:replace('${email}', g:template_email, 'g')
 
   let cur = s:replace('${cursor}', '', '')
   call setpos(".", [0, cur[0], cur[1]])

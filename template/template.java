@@ -1,5 +1,5 @@
 /**
- * @author ${author}
+ * @author ${author}<${email}>
  * @version ${date}
  */
 
