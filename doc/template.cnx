@@ -82,6 +82,15 @@ Smart template 现在支持以下占位符：
 *${FILENAME}*
     替换 filename 为 FILENAME。
 
+*${fileext}*
+    替换为文件后缀名。
+
+*${FileExt}*
+    替换为文件后缀名 file-extension 为 File-Extension。
+
+*${FILENAME}*
+    替换为文件后缀名 fileext 为 FILEEXT。
+
 *${date}*
     替换为今天的日期。
 
@@ -113,6 +122,13 @@ Smart template 现在支持以下占位符：
     需要在 vimrc 中加入以下设置： >
 
     let g:template_author = "You Name"
+<
+
+*${email}*
+    替换为用户的 Email 地址
+    需要在 vimrc 中加入以下设置： >
+
+    let g:template_email = "mail@addr.ess"
 <
 
 ==============================================================================

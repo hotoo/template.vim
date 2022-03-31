@@ -84,6 +84,15 @@ Smart template now support following placeholder.
 *${FILENAME}*
     replace to filename to FILENAME.
 
+*${fileext}*
+    replace to origin file extension.
+
+*${FileExt}*
+    replace to file-extension to File-Extension.
+
+*${FILENAME}*
+    replace to fileext to FILEEXT.
+
 *${date}*
     replace to date of today.
 
@@ -115,6 +124,13 @@ Smart template now support following placeholder.
     need following setting in your vimrc. >
 
     let g:template_author = "You Name"
+<
+
+*${email}*
+    replace to user's email.
+    need following setting in your vimrc. >
+
+    let g:template_email = "mail@addr.ess"
 <
 
 ==============================================================================
