@@ -75,6 +75,10 @@ function! s:template(fileName, fileExt)
   call s:replace('${FileName}', s:toUpperCaseFirstLetter(a:fileName, 'Unamed'), 'g')
   call s:replace('${filename}', s:toNameWithDefault(a:fileName, 'unamed'), 'g')
 
+  call s:replace('${FILEEXT}', s:toUpperCase(a:fileExt, ''), 'g')
+  call s:replace('${FileExt}', s:toUpperCaseFirstLetter(a:fileExt, ''), 'g')
+  call s:replace('${fileext}', s:toNameWithDefault(a:fileExt, ''), 'g')
+
   call s:replace('${author}', g:template_author, 'g')
   call s:replace('${email}', g:template_email, 'g')
 

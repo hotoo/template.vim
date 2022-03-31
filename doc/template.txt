@@ -84,6 +84,15 @@ Smart template now support following placeholder.
 *${FILENAME}*
     replace to filename to FILENAME.
 
+*${fileext}*
+    replace to origin file extension.
+
+*${FileExt}*
+    replace to file-extension to File-Extension.
+
+*${FILENAME}*
+    replace to fileext to FILEEXT.
+
 *${date}*
     replace to date of today.
 
