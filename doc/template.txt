@@ -109,7 +109,11 @@ Smart template now support following placeholder.
     current week number.
 
 *${week-by-filepath}*
-    placeholder for week number from file path like "2022/01/01.md", it is
+    placeholder for day of week from file path like "xxx/2022/01/01.md", it is
+    Saturday.
+
+*${week-by-filename}*
+    placeholder for day of week from file name like "xxx/2022-01-01.md", it is
     Saturday.
 
 *${dir-1}*
