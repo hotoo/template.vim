@@ -130,10 +130,10 @@ function! LoadTemplate()
     while 1
       let index = stridx(fullFileName, ".", lastIndex)
       if (index >= 0)
-        let ext = slice(fullFileName, index)
+        let ext = strpart(fullFileName, index)
         if filereadable(g:template_dir . '/template' . ext)
           let fileExt = ext
-          let fileName = slice(fullFileName, 0, index)
+          let fileName = strpart(fullFileName, 0, index)
           break
         endif
         let lastIndex = index + 1
