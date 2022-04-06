@@ -70,6 +70,8 @@ function! s:template(fileName, fileExt)
 
   let pathtime = strptime("%Y-%m-%d", get(dirs, -2, '') . "-" . get(dirs, -1, '') . "-" . a:fileName)
   call s:replace('${week-by-filepath}', strftime("%A", pathtime), 'g')
+  let filenametime = strptime("%Y-%m-%d", a:fileName)
+  call s:replace('${week-by-filename}', strftime("%A", filenametime), 'g')
 
   call s:replace('${FILENAME}', s:toUpperCase(a:fileName, 'UNAMED'), 'g')
   call s:replace('${FileName}', s:toUpperCaseFirstLetter(a:fileName, 'Unamed'), 'g')

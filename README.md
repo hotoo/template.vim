@@ -1,9 +1,16 @@
-
 # template.vim
 
 Smart load template file for Vim.
 
 ## Install
+
+### By vim-plug
+
+```viml
+Plug "hotoo/template.vim"
+```
+
+### By Manual
 
 Put `plugin/template.vim` into `$VIM/vimfiles/plugin/` for Windows,
 or into `.vim/plugin/` for *nix.
@@ -39,7 +46,11 @@ Set you custom template dir.
 
 ### g:template_author
 
-author name for template placeholder.
+Author name for template placeholder.
+
+### g:template_email
+
+Email address for template placeholder.
 
 ## Custom Template
 
@@ -49,38 +60,24 @@ Support following placeholder.
 - `${filename}` - get origin file name.
 - `${FileName}` - file-name to File-Name.
 - `${FILENAME}` - filename to FILENAME.
+- `${fileext}` - get origin file extension.
+- `${FileExt}` - Camel case file-ext to File-Ext.
+- `${FILEEXT}` - Upper case fileext to FILEEXT.
 - `${date}` - today.
 - `${datetime}` - now.
+- `${year}` - the year of now.
+- `${month}` - the month of now.
+- `${week}` - today's day of week.
+- `${week-by-filepath}` - the day of week from file path like "xxx/2022/04/01.md".
+- `${week-by-filename}` - the day of week from file name like "xxx/2022-04-01.md".
+- `${dir-1}` - the last of dir name. eg: "04" in file path "xxx/2022/04/01.md".
+- `${dir-2}` - the last but one of dir name. eg: "2022" in file path "xxx/2022/04/01.md".
+- `${dir-3}` - the last but two of dir name. eg: "xxx" in file path "xxx/2022/04/01.md".
+- `${dir-4}` - the last but three of dir name. eg: "yyy" in file path "zzz/yyy/xxx/2022/04/01.md".
+- `${dir-5}` - the last but four of dir name. eg: "zzz" in file path "zzz/yyy/xxx/2022/04/01.md".
 - `${author}` - Need `let g:template_author = "You Name"` in your vimrc.
+- `${email}` - Need `let g:template_email = "email@addr.ess"` in your vimrc.
 
-## TODO(maybe not)
+## License
 
-- 一种文件类型支持多个模板。
-- 类似 snipMate 的 ${1:default text}，支持多个占位符使用 <Tab> 跳转。${0} 等同于 ${cursor}
-  - 问题：作为模板来说是不是有点过度设计了？
-  - 可能会与 snipMate 等使用 <Tab> 的插件冲突。
-- 类似 snipMate 的自定义占位符特性，由用户自定义类似 ${date} 这类占位符，动态计算其值。 -- 百合仙子
-
-## FIXME
-
-- template.hpp 中防范宏定义重复引入的问题，如果文件名中带有特殊字符会出现 BUG。
-    - 防范方案 I: 不要使用带有特殊字符的文件名 :)
-    - 解决方案 II: 实现一个占位符，自动剔除、替换特殊字符。
-    - 解决方案 III: 也许应该实现由用户自定义占位符的特性？
-
-## See Also
-
-* [VIM 学习笔记 模板 (Template) - 语虚](http://yyq123.blogspot.com/2010/08/vim-template.html)
-* [http://www.vim.org/scripts/script.php?script_id=198 template file loader]
-* [使用 vim 的一些 tip - 潘魏增](http://panweizeng.com/archives/383)
-* [快速从模板建立文件 - 明城](http://www.gracecode.com/archives/2414/)
-    [QuickTemplate@vim.org](http://www.vim.org/scripts/script.php?script_id=2393)
-* [templates.vim : Load filetype templates for new files](http://www.vim.org/scripts/script.php?script_id=1172)
-* [template.vim : Simple and flexible template engine.](http://www.vim.org/scripts/script.php?script_id=2834)
-    [@github](http://github.com/thinca/vim-template)
-* [work problem with pathogen](https://twitter.com/#!/Leechael/status/26916538862796800)
-* [templates.vim](http://www.vim.org/scripts/script.php?script_id=1172)
-* [vimplate.vim](http://www.vim.org/scripts/script.php?script_id=1311)
-* [Vimplate Enhanced](http://www.vim.org/scripts/script.php?script_id=1808)
-* [load_template](http://www.vim.org/scripts/script.php?script_id=2957)
-* [autoloadTemplate.vim](http://www.vim.org/scripts/script.php?script_id=1795)
+[MIT](https://hotoo.mit-license.org/)
