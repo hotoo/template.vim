@@ -1,4 +1,4 @@
-# ${year}W${FILENAME} 月报
+# ${year}W${FILENAME} 周报
 
 ## 重点事项
 

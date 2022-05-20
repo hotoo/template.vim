@@ -125,7 +125,15 @@ function! LoadTemplate()
   let fileName = fullFileName
   let fileExt = s:getFileExt()
   let fileType = s:getFileType()
-  if "" != fileExt
+
+  if filereadable(g:template_dir . '/' . fileName)
+    " 如果存在和文件名同名的模板，直接使用。
+
+    let templateFileName = fullFileName
+    let fileName = fullFileName
+    let fileExt = ""
+
+  elseif "" != fileExt
     " 有文件后缀
 
     let lastIndex = 0
@@ -147,13 +155,6 @@ function! LoadTemplate()
     endwhile
 
     let templateFileName = 'template' . fileExt
-
-  elseif "" != fullFileName
-    " 没有后缀，有文件名
-
-    let templateFileName = fullFileName
-    let fileName = fullFileName
-    let fileExt = ""
 
   elseif "" == fullFileName && "" != fileType
     " 没有文件名，但是有文件类型
