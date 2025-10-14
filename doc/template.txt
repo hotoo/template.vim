@@ -90,7 +90,7 @@ Smart template now support following placeholder.
 *${FileExt}*
     replace to file-extension to File-Extension.
 
-*${FILENAME}*
+*${FILEEXT}*
     replace to fileext to FILEEXT.
 
 *${date}*
