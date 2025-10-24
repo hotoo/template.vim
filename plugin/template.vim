@@ -178,7 +178,7 @@ function! LoadTemplate()
   return ''
 endfunction
 
-if 0 != g:template_autoload
+if g:template_autoload
   autocmd! BufNewFile * silent! :call LoadTemplate()
 endif
 command! -nargs=0 Template call LoadTemplate()
